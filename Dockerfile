@@ -15,9 +15,6 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
 RUN chown -R www-data:www-data /var/www/html \
     && find /var/www/html -type f -exec chmod 644 {} \; \
     && find /var/www/html -type d -exec chmod 755 {} \; \
@@ -34,4 +31,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 80
 
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

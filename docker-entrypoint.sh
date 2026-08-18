@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# Write .env from environment variables injected by DockHosting
 cat > /var/www/html/.env << EOF
 APP_NAME="Flame Igniters FC"
 APP_ENV=${APP_ENV:-production}
@@ -18,10 +19,10 @@ DB_DATABASE=${DB_DATABASE}
 DB_USERNAME=${DB_USERNAME}
 DB_PASSWORD=${DB_PASSWORD}
 
-CACHE_DRIVER=${CACHE_DRIVER:-file}
+CACHE_DRIVER=file
 FILESYSTEM_DISK=${FILESYSTEM_DISK:-public}
-QUEUE_CONNECTION=${QUEUE_CONNECTION:-sync}
-SESSION_DRIVER=${SESSION_DRIVER:-file}
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
 SESSION_LIFETIME=120
 EOF
 
