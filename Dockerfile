@@ -2,9 +2,9 @@ FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
-    libfreetype6-dev libjpeg62-turbo-dev libwebp-dev libxpm-dev \
+    libfreetype6-dev libjpeg62-turbo-dev libwebp-dev libxpm-dev libicu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip intl \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
